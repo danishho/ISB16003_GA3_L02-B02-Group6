@@ -1,0 +1,7 @@
+Red Falcons,3,Blue Owls,1
+Green Mambas,2,Red Falcons,2
+Blue Owls,0,Green Mambas,4
+Gold Tigers,1,Blue Owls,1
+Red Falcons,0,Gold Tigers,2
+Green Mambas,one,Gold Tigers,0
+Green Mambas,1,Gold Tigers,0
