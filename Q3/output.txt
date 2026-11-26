@@ -1,0 +1,37 @@
+$ javac *.java
+
+$ java LeagueApp
+Usage: java LeagueApp report | add <home> <hg> <away> <ag>
+
+$ java LeagueApp report
+Warning: skipped line 6 (invalid format)
+=== UniLeague Futsal 2026 ===
+Pos Team              P   W   D   L  GF  GA   GD  Pts
+1   Green Mambas      3   2   1   0   7   2   +5    7
+2   Gold Tigers       3   1   1   1   3   2   +1    4
+3   Red Falcons       3   1   1   1   5   5   +0    4
+4   Blue Owls         3   0   1   2   2   8   -6    1
+
+$ java LeagueApp add "Blue Owls" 1 "Gold Tigers" 5
+Saved: Blue Owls 1 - 5 Gold Tigers
+
+$ java LeagueApp add "Blue Owls" -1 "Gold Tigers" 2
+Error: goals must be non-negative integers
+
+$ java LeagueApp add "Blue Owls" abc "Gold Tigers" 2
+Error: goals must be non-negative integers
+
+$ java LeagueApp add "Blue Owls" 2 "Blue Owls" 1
+Error: a team cannot play itself
+
+$ java -Dleague.config=missing.properties LeagueApp report
+Error: file not found: missing.properties
+
+$ java -Dleague.config=alt.properties LeagueApp report
+Warning: skipped line 6 (invalid format)
+=== UniLeague Futsal 2025 ===
+Pos Team              P   W   D   L  GF  GA   GD  Pts
+1   Gold Tigers       4   2   1   1   8   3   +5    6
+2   Green Mambas      3   2   1   0   7   2   +5    6
+3   Red Falcons       3   1   1   1   5   5   +0    3
+4   Blue Owls         4   0   1   3   3  13  -10    0
