@@ -10,13 +10,13 @@ import java.util.List;
 public class LeagueStore {
 
 	private final String dataFilePath;
-	private final String ReportFileName;
+	private final String reportFileName;
 	
 	
 	
 	public LeagueStore(LeagueConfig config) {
 		this.dataFilePath = config.getDataFile();
-		this.ReportFileName = config.getReportFile();
+		this.reportFileName = config.getReportFile();
     }
 	
 	/**
@@ -79,7 +79,7 @@ public class LeagueStore {
     public void saveReport(String reportContent) throws IOException {
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new FileWriter(ReportFileName, false));
+            writer = new BufferedWriter(new FileWriter(reportFileName, false));
             writer.write(reportContent);
         } finally {
             if (writer != null) {

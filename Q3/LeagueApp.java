@@ -33,7 +33,7 @@ public class LeagueApp {
             System.out.print(table);
             store.saveReport(table);
         } catch (FileNotFoundException e) {
-            System.out.println("Error: file not found:" + e.getMessage());
+            System.out.println("Error: file not found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -51,7 +51,7 @@ public class LeagueApp {
 			awayTeam = getStr(params[3]);
 			awayGoals = getInt(params[4]);
 		} catch (NumberFormatException e) {
-			System.out.println("Error: goals must be non-negative integer");
+			System.out.println("Error: goals must be non-negative integers");
 			return;
 		}
 		
@@ -62,7 +62,7 @@ public class LeagueApp {
 		}
 		
 		if(homeTeam.equals(awayTeam)) {
-			System.out.println("Error: home and away teams must be different");
+			System.out.println("Error: a team cannot play itself");
 			return;
 		}
 		
@@ -101,7 +101,7 @@ public class LeagueApp {
 	    String str = value.toString().trim();
 
 	    if (str.isEmpty()) {
-	        return 0;
+	        throw new NumberFormatException();
 	    }
 
 	    try {

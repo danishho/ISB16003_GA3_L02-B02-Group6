@@ -12,13 +12,13 @@ public class LeagueConfig {
     private static final String KEY_DATA_FILE = "dataFile";
     private static final String KEY_WIN_POINTS = "winPoints";
     private static final String KEY_DRAW_POINTS = "drawPoints";
-    private static final String KEY_REPORT_FILE = "report.txt";
+    private static final String KEY_REPORT_FILE = "reportFile";
 
     private static final String DEFAULT_LEAGUE_NAME = "League";
     private static final String DEFAULT_DATA_FILE = "matches.txt";
     private static final int DEFAULT_WIN_POINTS = 3;
     private static final int DEFAULT_DRAW_POINTS = 1;
-    private static final String DEFAULT_REPORT_FILE = "report.txt";
+    private static final String DEFAULT_REPORT_FILE = "standings.txt";
     
 	private final Properties props;
     private final String configPath;
@@ -37,7 +37,6 @@ public class LeagueConfig {
     public void load() throws FileNotFoundException,IOException {
         FileInputStream fis = null;
         
-        fis = loadConfigFile(configPath);
         try {
             fis = new FileInputStream(configPath);
             props.load(fis);
@@ -54,26 +53,7 @@ public class LeagueConfig {
         }
     }
     
-    private FileInputStream loadConfigFile(String configPath) throws FileNotFoundException {
-		FileInputStream fis = null;
-		try {
-			fis = new FileInputStream(configPath);
-		} catch (FileNotFoundException e) {
-			throw new FileNotFoundException(configPath);
-		}finally {
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception e) {
-					System.out.println("Error closing file input stream :: " + e.getMessage());
-				}
-			}
-		}
-		
-		return fis;
-	}
-    
-    
+
     public String getLeagueName() {
         return getStringOrDefault(props.getProperty(KEY_LEAGUE_NAME), DEFAULT_LEAGUE_NAME);
     }
