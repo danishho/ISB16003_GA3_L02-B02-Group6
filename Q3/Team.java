@@ -1,3 +1,12 @@
+/*
+ * ISB16003 Group Assignment 3
+ * Group: L02B02_Group6
+ * Members:
+ * MUHAMMAD DANISH HO BIN MUHAMMAD DANIAL (5222610009),
+ * MUHAMAD ALIF HAKIM BIN HASHIM (5222610019),
+ * NUR SYAHDINA BINTI SHAHRUL NIZA (5222610658),
+ * NUR IRDINA SYAFIAH BINTI KHAIRUL AFFENDI (5222610200)
+ */
 
 /**
  * Tracks match statistics for a single team in the league.
@@ -12,6 +21,9 @@ public class Team {
     private int goalsFor;
     private int goalsAgainst;
 
+    /**
+     * Creates a Team entry with zeroed statistics.
+     */
     public Team(String name) {
         this.name = name;
     }
@@ -61,10 +73,16 @@ public class Team {
         return goalsAgainst;
     }
 
+    /**
+     * Returns goal difference (goals scored minus goals conceded).
+     */
     public int getGoalDifference() {
         return goalsFor - goalsAgainst;
     }
 
+    /**
+     * Calculates total points earned from wins and draws.
+     */
     public int getPoints(int winPoints, int drawPoints) {
         return (won * winPoints) + (drawn * drawPoints);
     }

@@ -1,3 +1,13 @@
+/*
+ * ISB16003 Group Assignment 3
+ * Group: L02B02_Group6
+ * Members:
+ * MUHAMMAD DANISH HO BIN MUHAMMAD DANIAL (5222610009),
+ * MUHAMAD ALIF HAKIM BIN HASHIM (5222610019),
+ * NUR SYAHDINA BINTI SHAHRUL NIZA (5222610658),
+ * NUR IRDINA SYAFIAH BINTI KHAIRUL AFFENDI (5222610200)
+ */
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -7,13 +17,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles all file I/O for reading matches, appending new match results and writing standings reports.
+ */
 public class LeagueStore {
+
+	private static final String CSV_DELIMITER = ",";
+	private static final String WARN_SKIPPED_LINE = "Warning: skipped line %d (invalid format)";
 
 	private final String dataFilePath;
 	private final String reportFileName;
 	
-	
-	
+	/**
+	 * Constructs a LeagueStore using file paths resolved from LeagueConfig.
+	 */
 	public LeagueStore(LeagueConfig config) {
 		this.dataFilePath = config.getDataFile();
 		this.reportFileName = config.getReportFile();
@@ -39,7 +56,7 @@ public class LeagueStore {
                 try {
                     matches.add(Match.parse(line));
                 } catch (IllegalArgumentException e) {
-                    System.out.println(String.format("Warning: skipped line %d (invalid format)", lineNumber));
+                    System.out.println(String.format(WARN_SKIPPED_LINE, lineNumber));
                 }
             }
         } catch (FileNotFoundException e) {
@@ -62,7 +79,8 @@ public class LeagueStore {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(dataFilePath, true));
-            writer.write(match.getHomeTeam() + "," + match.getHomeGoals() + ","+ match.getAwayTeam() + "," + match.getAwayGoals());
+            writer.write(match.getHomeTeam() + CSV_DELIMITER + match.getHomeGoals() + CSV_DELIMITER
+                    + match.getAwayTeam() + CSV_DELIMITER + match.getAwayGoals());
             writer.newLine();
         } finally {
             if (writer != null) {
@@ -74,7 +92,7 @@ public class LeagueStore {
     }
     
     /**
-     * Overwrites standings.txt with the formatted league table.
+     * Overwrites report file with the formatted league table.
      */
     public void saveReport(String reportContent) throws IOException {
         BufferedWriter writer = null;

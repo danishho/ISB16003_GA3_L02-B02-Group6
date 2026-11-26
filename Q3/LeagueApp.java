@@ -1,22 +1,49 @@
+/*
+ * ISB16003 Group Assignment 3
+ * Group: L02B02_Group6
+ * Members:
+ * MUHAMMAD DANISH HO BIN MUHAMMAD DANIAL (5222610009),
+ * MUHAMAD ALIF HAKIM BIN HASHIM (5222610019),
+ * NUR SYAHDINA BINTI SHAHRUL NIZA (5222610658),
+ * NUR IRDINA SYAFIAH BINTI KHAIRUL AFFENDI (5222610200)
+ */
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * CLI entry point for generating league standings reports and adding match results.
+ */
 public class LeagueApp {
-	
+
+	private static final String CMD_REPORT = "report";
+	private static final String CMD_ADD = "add";
+	private static final String MSG_USAGE = "Usage: java LeagueApp report | add <home> <hg> <away> <ag>";
+	private static final String MSG_ERR_GOALS = "Error: goals must be non-negative integers";
+	private static final String MSG_ERR_SAME_TEAM = "Error: a team cannot play itself";
+	private static final String MSG_ERR_FILE_NOT_FOUND = "Error: file not found: ";
+	private static final String MSG_ERR_PREFIX = "Error: ";
+	private static final String MSG_SAVED_FORMAT = "Saved: %s %d - %d %s";
+
+	/**
+	 * Dispatches CLI commands (report or add) based on argument count and command name.
+	 */
 	public static void main(String[] args) {
 		
-		if(args.length == 1 && args[0].equals("report")) {
+		if(args.length == 1 && args[0].equals(CMD_REPORT)) {
 			generateReport();
-		}else if(args.length == 5 && args[0].equals("add")) {
+		}else if(args.length == 5 && args[0].equals(CMD_ADD)) {
 			addMatch(args);
 		}else {
-			System.out.println("Usage: java LeagueApp report | add <home> <hg> <away> <ag>");
+			System.out.println(MSG_USAGE);
 		}
 		
 	}
 	
-	
+	/**
+	 * Loads configuration and matches, computes standings, prints the table, and saves the report file.
+	 */
 	private static void generateReport() {
        
         try {
@@ -33,12 +60,15 @@ public class LeagueApp {
             System.out.print(table);
             store.saveReport(table);
         } catch (FileNotFoundException e) {
-            System.out.println("Error: file not found: " + e.getMessage());
+            System.out.println(MSG_ERR_FILE_NOT_FOUND + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(MSG_ERR_PREFIX + e.getMessage());
         }
     }
 	
+	/**
+	 * Validates CLI arguments for a new match and appends the match to the configured data file.
+	 */
 	public static void addMatch(String[] params) {
 		String homeTeam;
 		int homeGoals;
@@ -51,18 +81,18 @@ public class LeagueApp {
 			awayTeam = getStr(params[3]);
 			awayGoals = getInt(params[4]);
 		} catch (NumberFormatException e) {
-			System.out.println("Error: goals must be non-negative integers");
+			System.out.println(MSG_ERR_GOALS);
 			return;
 		}
 		
 		
 		if(homeGoals < 0 || awayGoals < 0) {
-			System.out.println("Error: goals must be non-negative integers");
+			System.out.println(MSG_ERR_GOALS);
 			return;
 		}
 		
 		if(homeTeam.equals(awayTeam)) {
-			System.out.println("Error: a team cannot play itself");
+			System.out.println(MSG_ERR_SAME_TEAM);
 			return;
 		}
 		
@@ -74,16 +104,19 @@ public class LeagueApp {
             Match match = new Match(homeTeam, homeGoals, awayTeam, awayGoals);
             store.appendMatch(match);
             
-            System.out.println(String.format("Saved: %s %d - %d %s",homeTeam,homeGoals,awayGoals,awayTeam));
+            System.out.println(String.format(MSG_SAVED_FORMAT,homeTeam,homeGoals,awayGoals,awayTeam));
         } catch (FileNotFoundException e) {
-            System.out.println("Error: file not found: " + e.getMessage());
+            System.out.println(MSG_ERR_FILE_NOT_FOUND + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(MSG_ERR_PREFIX + e.getMessage());
         }
 		
 		
 	}
 	
+	/**
+	 * Converts an argument object to a trimmed String, returning an empty string if null.
+	 */
 	public static String getStr(Object obj) {
 		if(obj != null) {
 			return obj.toString().trim();
@@ -92,6 +125,9 @@ public class LeagueApp {
 		}
 	}
 	
+	/**
+	 * Parses an integer from an argument object, throwing NumberFormatException for blank or non-numeric input.
+	 */
 	public static int getInt(Object value) {
 
 	    if (value == null) {
