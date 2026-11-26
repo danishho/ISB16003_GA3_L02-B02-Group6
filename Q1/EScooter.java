@@ -7,6 +7,7 @@ public class EScooter extends Vehicle implements Chargeable {
     private static final int FREE_MINUTES = 3;
     private static final double RATE_PER_MINUTE = 0.40;
     private static final double MAX_FARE = 10.00;
+    private static final int FULL_BATTERY = 100;
 
     public EScooter(String model, int battery) {
         super("ES", model);
@@ -38,6 +39,6 @@ public class EScooter extends Vehicle implements Chargeable {
     //recharges the battery to 100%.
     @Override
     public void recharge() {
-        battery = 100;
+        battery = FULL_BATTERY;
     }
 }
