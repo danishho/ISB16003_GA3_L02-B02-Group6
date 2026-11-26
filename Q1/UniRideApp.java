@@ -49,8 +49,7 @@ public class UniRideApp {
 
         for (Vehicle vehicle : fleet) {
             System.out.printf(
-                    "%s: RM%.2f%n",
-                    vehicle,
+                    vehicle + ": RM%.2f%n",
                     vehicle.totalFare(RIDE_MINUTES));
         }
 
