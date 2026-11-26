@@ -55,8 +55,7 @@ public class UniRideApp {
         }
 
         System.out.printf(
-                "Revenue (%d min): RM%.2f%n",
-                RIDE_MINUTES,
+                "Revenue (" + RIDE_MINUTES + "min): RM%.2f%n",
                 totalRevenue(fleet, RIDE_MINUTES));
 
         System.out.printf(
