@@ -1,7 +1,11 @@
-/*
- * Represents a bicycle that inherits from Vehicle.
+/*ISB16003 Group Assignment 3
+ * 
+ * 
+ * 
+ *Represents a bicycle that inherits from Vehicle.
  * Charges RM 2 for every 30 minutes or part thereof.
  */
+
 public final class Bicycle extends Vehicle {
 
     private static final int BLOCK_MINUTES = 30;

@@ -1,4 +1,10 @@
-//interface for vehicles that can be recharged
+/*ISB16003 Group Assignment 3
+ * 
+ * 
+ * 
+ * 
+ * interface for vehicles that can be recharged
+ */
 
 public interface Chargeable {
 	

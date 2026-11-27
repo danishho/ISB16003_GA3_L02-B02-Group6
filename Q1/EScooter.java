@@ -1,4 +1,10 @@
-//electric scooter vehicle.
+/*ISB16003 Group Assignment 3
+ * 
+ * 
+ * 
+ * 
+ * electric scooter vehicle.
+ */
 
 public class EScooter extends Vehicle implements Chargeable {
 
