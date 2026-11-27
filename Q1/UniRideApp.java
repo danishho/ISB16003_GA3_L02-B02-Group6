@@ -1,7 +1,14 @@
-/*ISB16003 Group Assignment 3
- * 
- * 
- * 
+/*
+ * ISB16003 Group Assignment 3
+ * Group: L02B02_Group6
+ * Members:
+ * MUHAMMAD DANISH HO BIN MUHAMMAD DANIAL (5222610009),
+ * MUHAMAD ALIF HAKIM BIN HASHIM (5222610019),
+ * NUR SYAHDINA BINTI SHAHRUL NIZA (5222610658),
+ * NUR IRDINA SYAFIAH BINTI KHAIRUL AFFENDI (5222610200)
+ */
+
+/*
  * Runs the UniRide fleet pricing and battery recharging.
  * Uses Vehicle and Chargeable references to handle different vehicle type.
  */
