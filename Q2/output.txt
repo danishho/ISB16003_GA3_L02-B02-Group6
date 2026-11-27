@@ -1,7 +1,6 @@
 javac *.java
 
 java CafeApp
-
 #1 PAID RM18.00 | balance RM12.00
 #2 STOCK Only 2 RotiCanai left | balance RM12.00
 #3 BAD QUANTITY | balance RM12.00

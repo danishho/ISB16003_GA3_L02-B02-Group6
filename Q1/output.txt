@@ -1,7 +1,6 @@
 javac *.java
 
 java UniRideApp
-
 Vehicles created: 4
 ES001 Volt-S1: RM9.33
 BK002 City Cruiser: RM2.12
