@@ -1,0 +1,9 @@
+Vehicles created: 4
+ES001 Volt-S1: RM9.33
+BK002 City Cruiser: RM2.12
+SH003 Campus Loop: RM10.60
+ES004 Volt-S2: RM9.33
+Revenue (25min): RM31.38
+Edge cases: RM0.00 | RM10.60 | RM6.36 | RM5.30
+Recharged: 1
+Battery levels: 85 100 20
